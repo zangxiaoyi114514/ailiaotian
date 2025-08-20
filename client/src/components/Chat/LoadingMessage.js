@@ -76,7 +76,7 @@ const LoadingMessage = ({ aiProvider = 'openai' }) => {
           <SmartToy fontSize="small" />
         </Avatar>
         
-        {/* 加载消息气泡 */}
+        {/* 加载中的消息气泡 */}
         <Paper
           elevation={1}
           sx={{
@@ -88,34 +88,25 @@ const LoadingMessage = ({ aiProvider = 'openai' }) => {
             maxWidth: '70%',
           }}
         >
-          {/* 骨架屏加载效果 */}
+          {/* 骨架屏效果 */}
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
             <Skeleton
               variant="text"
-              width="90%"
+              width="80%"
               height={20}
               animation="wave"
-              sx={{
-                backgroundColor: theme.palette.mode === 'dark' ? '#2d2d2d' : '#f0f0f0',
-              }}
-            />
-            <Skeleton
-              variant="text"
-              width="75%"
-              height={20}
-              animation="wave"
-              sx={{
-                backgroundColor: theme.palette.mode === 'dark' ? '#2d2d2d' : '#f0f0f0',
-              }}
             />
             <Skeleton
               variant="text"
               width="60%"
               height={20}
               animation="wave"
-              sx={{
-                backgroundColor: theme.palette.mode === 'dark' ? '#2d2d2d' : '#f0f0f0',
-              }}
+            />
+            <Skeleton
+              variant="text"
+              width="90%"
+              height={20}
+              animation="wave"
             />
           </Box>
         </Paper>
