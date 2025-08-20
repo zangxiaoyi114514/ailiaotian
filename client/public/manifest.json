@@ -1,5 +1,5 @@
 {
-  "short_name": "AI聊天",
+  "short_name": "AI Chat",
   "name": "AI智能聊天助手",
   "description": "支持多种AI模型的智能对话平台",
   "icons": [
@@ -24,8 +24,48 @@
   "theme_color": "#667eea",
   "background_color": "#ffffff",
   "orientation": "portrait-primary",
-  "categories": ["productivity", "utilities"],
-  "lang": "zh-CN",
   "scope": "/",
+  "lang": "zh-CN",
+  "categories": ["productivity", "utilities"],
+  "screenshots": [
+    {
+      "src": "screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "screenshot-narrow.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "新建聊天",
+      "short_name": "新聊天",
+      "description": "开始新的AI对话",
+      "url": "/chat",
+      "icons": [
+        {
+          "src": "favicon.ico",
+          "sizes": "32x32"
+        }
+      ]
+    },
+    {
+      "name": "设置",
+      "short_name": "设置",
+      "description": "配置应用设置",
+      "url": "/settings",
+      "icons": [
+        {
+          "src": "favicon.ico",
+          "sizes": "32x32"
+        }
+      ]
+    }
+  ],
   "prefer_related_applications": false
 }

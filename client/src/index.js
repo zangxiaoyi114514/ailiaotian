@@ -49,27 +49,27 @@ const theme = createTheme({
     },
     h4: {
       fontSize: '1.5rem',
-      fontWeight: 500,
+      fontWeight: 600,
     },
     h5: {
       fontSize: '1.25rem',
-      fontWeight: 500,
+      fontWeight: 600,
     },
     h6: {
       fontSize: '1rem',
-      fontWeight: 500,
+      fontWeight: 600,
     },
     body1: {
       fontSize: '1rem',
-      lineHeight: 1.5,
+      lineHeight: 1.6,
     },
     body2: {
       fontSize: '0.875rem',
-      lineHeight: 1.43,
+      lineHeight: 1.6,
     },
   },
   shape: {
-    borderRadius: 8,
+    borderRadius: 12,
   },
   components: {
     MuiButton: {
@@ -77,6 +77,7 @@ const theme = createTheme({
         root: {
           textTransform: 'none',
           borderRadius: 8,
+          padding: '8px 16px',
           fontWeight: 500,
         },
       },
@@ -84,8 +85,8 @@ const theme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
+          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
           borderRadius: 12,
-          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
         },
       },
     },
@@ -98,94 +99,40 @@ const theme = createTheme({
         },
       },
     },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundImage: 'none',
+        },
+      },
+    },
   },
 });
 
-// 性能监控
-if (process.env.NODE_ENV === 'production') {
-  // 监控页面加载性能
-  window.addEventListener('load', () => {
-    if ('performance' in window) {
-      const perfData = performance.getEntriesByType('navigation')[0];
-      console.log('页面加载时间:', perfData.loadEventEnd - perfData.fetchStart, 'ms');
-    }
-  });
-
-  // 监控资源加载
-  window.addEventListener('load', () => {
-    const resources = performance.getEntriesByType('resource');
-    resources.forEach(resource => {
-      if (resource.duration > 1000) {
-        console.warn('慢资源:', resource.name, resource.duration + 'ms');
-      }
-    });
-  });
-}
-
-// 错误边界
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, error: null, errorInfo: null };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    this.setState({
-      error: error,
-      errorInfo: errorInfo
-    });
-    
-    // 在生产环境中，可以将错误发送到错误监控服务
-    if (process.env.NODE_ENV === 'production') {
-      console.error('应用错误:', error, errorInfo);
-    }
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div style={{
-          padding: '20px',
-          textAlign: 'center',
-          minHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}>
-          <h2>抱歉，出现了一些问题</h2>
-          <p>请刷新页面重试，如果问题持续存在，请联系技术支持。</p>
-          <button 
-            onClick={() => window.location.reload()}
-            style={{
-              marginTop: '20px',
-              padding: '10px 20px',
-              backgroundColor: '#1976d2',
-              color: 'white',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}
-          >
-            刷新页面
-          </button>
-        </div>
-      );
-    }
-
-    return this.props.children;
-  }
-}
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <SnackbarProvider 
+          maxSnack={3}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          autoHideDuration={5000}
+        >
+          <SettingsProvider>
+            <AuthProvider>
+              <ChatProvider>
+                <App />
+              </ChatProvider>
+            </AuthProvider>
+          </SettingsProvider>
+        </SnackbarProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
