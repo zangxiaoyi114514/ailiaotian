@@ -54,8 +54,8 @@ const AuthLayout = ({ children, title, subtitle }) => {
       {/* 主题切换按钮 */}
       <IconButton
         onClick={toggleTheme}
-        sx={
-          {
+        sx=
+          {{
             position: 'absolute',
             top: 16,
             right: 16,
