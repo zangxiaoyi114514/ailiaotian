@@ -1,0 +1,59 @@
+{
+  "name": "ai-chat-website",
+  "version": "1.0.0",
+  "description": "一个支持多个AI提供商的现代化聊天网站，具有美观的界面和流畅的动画效果。支持一键初始化配置，开箱即用。",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "server:dev": "cd server && npm run dev",
+    "client:dev": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "start": "cd server && npm start",
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install",
+    "test": "cd server && npm test && cd ../client && npm test",
+    "lint": "cd server && npm run lint && cd ../client && npm run lint",
+    "clean": "cd server && rm -rf node_modules && cd ../client && rm -rf node_modules && rm -rf node_modules"
+  },
+  "keywords": [
+    "ai",
+    "chat",
+    "chatbot",
+    "openai",
+    "gemini",
+    "react",
+    "nodejs",
+    "express",
+    "mongodb",
+    "mysql",
+    "websocket",
+    "jwt",
+    "authentication",
+    "real-time",
+    "responsive",
+    "modern-ui",
+    "framer-motion",
+    "ai-assistant",
+    "multi-provider",
+    "chat-application"
+  ],
+  "author": {
+    "name": "AI Chat Team",
+    "email": "contact@ai-chat.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zangxiaoyi114514/ailiaotian.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zangxiaoyi114514/ailiaotian/issues"
+  },
+  "homepage": "https://github.com/zangxiaoyi114514/ailiaotian#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}
